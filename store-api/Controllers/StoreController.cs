@@ -17,11 +17,18 @@ namespace store_api.Controllers
             salesForceService = arg_salesforce;
         }
 
-        [Route("product/listarInventario")]
-        [HttpPost()]
+        [Route("products")]
+        [HttpGet()]
         public ActionResult<List<ivprd>> listarInventario()
         {
             return salesForceService.listarProductosAlmacen();
+        }
+
+        [Route("products/{arg_cod_producto}")]
+        [HttpGet()]
+        public ActionResult<ivprd> getProduct(int arg_cod_producto)
+        {
+            return salesForceService.listarProductosAlmacen().First();
         }
 
     }

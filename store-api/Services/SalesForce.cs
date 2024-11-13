@@ -14,7 +14,7 @@ namespace store_api.Services
 
         public List<ivprd> listarProductosAlmacen()
         {
-           return  this.repository.listProductAlmacen();
+           return this.repository.listProductAlmacen();
         }
     }
 }
