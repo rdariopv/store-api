@@ -1,0 +1,12 @@
+H:\RDARIOPV\GIT\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.deps.json
+H:\RDARIOPV\GIT\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.dll
+H:\RDARIOPV\GIT\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.pdb
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.csproj.AssemblyReference.cache
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.GeneratedMSBuildEditorConfig.editorconfig
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.AssemblyInfoInputs.cache
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.AssemblyInfo.cs
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.csproj.CoreCompileInputs.cache
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.dll
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\refint\xbiz-store.dll
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.pdb
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\ref\xbiz-store.dll
