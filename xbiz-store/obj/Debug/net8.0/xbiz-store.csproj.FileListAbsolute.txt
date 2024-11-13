@@ -10,3 +10,4 @@ H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.dll
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\refint\xbiz-store.dll
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.pdb
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\ref\xbiz-store.dll
+H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.sourcelink.json

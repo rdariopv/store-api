@@ -92,3 +92,4 @@ H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\refint\store-api.dll
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.pdb
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.genruntimeconfig.cache
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\ref\store-api.dll
+H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.sourcelink.json
