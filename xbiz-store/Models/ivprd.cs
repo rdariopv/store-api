@@ -14,5 +14,7 @@ namespace xbiz_store.Models
         [Key]
         public int ivprdcprd { get; set; }
         public string ivprddesc { get; set; }
+
+        public int ivprdcmon { get; set; }
     }
 }

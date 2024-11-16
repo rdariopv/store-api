@@ -3407,19 +3407,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rpardo\\.nuget\\packages\\": {}
+    "C:\\Users\\Windows 10\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\store-api.csproj",
+      "projectUniqueName": "D:\\dotnet_project\\store-api\\store-api\\store-api.csproj",
       "projectName": "store-api",
-      "projectPath": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\store-api.csproj",
-      "packagesPath": "C:\\Users\\rpardo\\.nuget\\packages\\",
-      "outputPath": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\obj\\",
+      "projectPath": "D:\\dotnet_project\\store-api\\store-api\\store-api.csproj",
+      "packagesPath": "C:\\Users\\Windows 10\\.nuget\\packages\\",
+      "outputPath": "D:\\dotnet_project\\store-api\\store-api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rpardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Windows 10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3433,8 +3438,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj": {
-              "projectPath": "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj"
+            "D:\\dotnet_project\\store-api\\xbiz-store\\xbiz-store.csproj": {
+              "projectPath": "D:\\dotnet_project\\store-api\\xbiz-store\\xbiz-store.csproj"
             }
           }
         }
@@ -3477,7 +3482,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
