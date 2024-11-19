@@ -3407,12 +3407,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Windows 10\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
+    "C:\\Users\\rpardo\\.nuget\\packages\\": {}
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\dotnet_project\\store-api\\store-api\\store-api.csproj",
       "projectName": "store-api",
       "projectPath": "D:\\dotnet_project\\store-api\\store-api\\store-api.csproj",
@@ -3425,6 +3430,16 @@
       "configFilePaths": [
         "C:\\Users\\Windows 10\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+      "projectUniqueName": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\store-api.csproj",
+      "projectName": "store-api",
+      "projectPath": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\store-api.csproj",
+      "packagesPath": "C:\\Users\\rpardo\\.nuget\\packages\\",
+      "outputPath": "H:\\RDARIOPV\\GIT\\store-api\\store-api\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\rpardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3438,8 +3453,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+<<<<<<< HEAD
             "D:\\dotnet_project\\store-api\\xbiz-store\\xbiz-store.csproj": {
               "projectPath": "D:\\dotnet_project\\store-api\\xbiz-store\\xbiz-store.csproj"
+=======
+            "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj": {
+              "projectPath": "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj"
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
             }
           }
         }
@@ -3482,7 +3502,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
       }
     }
   }

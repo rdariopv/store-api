@@ -93,6 +93,7 @@ H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.pdb
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.genruntimeconfig.cache
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\ref\store-api.dll
 H:\RDARIOPV\GIT\store-api\store-api\obj\Debug\net8.0\store-api.sourcelink.json
+<<<<<<< HEAD
 D:\dotnet_project\store-api\store-api\bin\Debug\net8.0\appsettings.Development.json
 D:\dotnet_project\store-api\store-api\bin\Debug\net8.0\appsettings.json
 D:\dotnet_project\store-api\store-api\bin\Debug\net8.0\store-api.exe
@@ -188,3 +189,5 @@ D:\dotnet_project\store-api\store-api\obj\Debug\net8.0\refint\store-api.dll
 D:\dotnet_project\store-api\store-api\obj\Debug\net8.0\store-api.pdb
 D:\dotnet_project\store-api\store-api\obj\Debug\net8.0\store-api.genruntimeconfig.cache
 D:\dotnet_project\store-api\store-api\obj\Debug\net8.0\ref\store-api.dll
+=======
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821

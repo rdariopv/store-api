@@ -11,6 +11,7 @@ H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\refint\xbiz-store.dll
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.pdb
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\ref\xbiz-store.dll
 H:\RDARIOPV\GIT\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.sourcelink.json
+<<<<<<< HEAD
 D:\dotnet_project\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.deps.json
 D:\dotnet_project\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.dll
 D:\dotnet_project\store-api\xbiz-store\bin\Debug\net8.0\xbiz-store.pdb
@@ -24,3 +25,5 @@ D:\dotnet_project\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.dll
 D:\dotnet_project\store-api\xbiz-store\obj\Debug\net8.0\refint\xbiz-store.dll
 D:\dotnet_project\store-api\xbiz-store\obj\Debug\net8.0\xbiz-store.pdb
 D:\dotnet_project\store-api\xbiz-store\obj\Debug\net8.0\ref\xbiz-store.dll
+=======
+>>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
