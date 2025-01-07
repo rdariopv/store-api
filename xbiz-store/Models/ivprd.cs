@@ -13,7 +13,6 @@ namespace xbiz_store.Models
     {
         [Key]
         public int ivprdcprd { get; set; }
-<<<<<<< HEAD
         public string ivprdnomb { get; set; }
         public int ivprdclin { get; set; }
         public int ivprdcgru { get; set; }
@@ -67,8 +66,5 @@ namespace xbiz_store.Models
         public int ivprdstat { get; set; }
         public int ivprdride { get; set; }
 
-=======
-        public string ivprddesc { get; set; }
->>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
     }
 }

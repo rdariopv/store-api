@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "D:\\dotnet_project\\store-api\\xbiz-store\\xbiz-store.csproj": {}
   },
   "projects": {
@@ -20,22 +19,6 @@
         "configFilePaths": [
           "C:\\Users\\Windows 10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-=======
-    "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj": {}
-  },
-  "projects": {
-    "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj",
-        "projectName": "xbiz-store",
-        "projectPath": "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\xbiz-store.csproj",
-        "packagesPath": "C:\\Users\\rpardo\\.nuget\\packages\\",
-        "outputPath": "H:\\RDARIOPV\\GIT\\store-api\\xbiz-store\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\rpardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,11 +77,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
->>>>>>> add3e421849c4d10b0272f6a7f02b12ce3926821
         }
       }
     }
