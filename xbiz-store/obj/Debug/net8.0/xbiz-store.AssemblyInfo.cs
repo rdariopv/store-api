@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("xbiz-store")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1307a9454a8ddfd672fe982e3d914d110acc18ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e71f519b5587176c0823c2d37b92e258c0bd7d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("xbiz-store")]
 [assembly: System.Reflection.AssemblyTitleAttribute("xbiz-store")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
