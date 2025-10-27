@@ -1,15 +1,22 @@
-using xbiz_store.Context;
+﻿using xbiz_store.Context;
 using Microsoft.EntityFrameworkCore;
 using xbiz_store.Repository;
 using store_api.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configura la cadena de conexi�n (ConnectionString) a SQL Server
+// Configura la cadena de conexión (ConnectionString) a SQL Server
 var connectionString = builder.Configuration.GetConnectionString("cnx");
 builder.Services.AddDbContext<StoreContext>(opt => opt.UseSqlServer(connectionString));
 
 // Add services to the container.
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IStoreContext, StoreContext>();
@@ -37,3 +44,32 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//store_api /
+//├── Controllers /
+//│   ├── ProductsController.cs
+//│   ├── CatalogsController.cs
+//│   ├── CartController.cs
+//│   ├── OrdersController.cs
+//│   └── UsersController.cs
+//├── Models /
+//│   ├── Product.cs
+//│   ├── Category.cs
+//│   ├── Cart.cs
+//│   ├── CartItem.cs
+//│   ├── Order.cs
+//│   └── User.cs
+//├── DTOs /
+//│   ├── ProductDto.cs
+//│   ├── CartDto.cs
+//│   └── OrderDto.cs
+//├── Services /
+//│   ├── ProductService.cs
+//│   ├── CartService.cs
+//│   ├── OrderService.cs
+//│   └── UserService.cs
+//├── Data /
+//│   ├── AppDbContext.cs
+//│   └── SeedData.cs
+//└── Program.cs
+

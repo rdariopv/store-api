@@ -23,27 +23,27 @@ namespace xbiz_store.Repository
         public  List<ivprd> listProductAlmacen()
         {
             try { 
-              return  context.ivprd.ToList(); 
+              return  null; 
             }catch (Exception ex) { 
                 List<ivprd> lista= new List<ivprd>();
 
-                ivprd x=new ivprd();
-                x.ivprdcprd = 1;
-                x.ivprddesc ="producto 1";
-                lista.Add(x);
-                ivprd x2 = new ivprd();
-                x2.ivprdcprd = 2;
-                x2.ivprddesc = "producto 2";
-                lista.Add(x2);
-                ivprd x3 = new ivprd();
-                x3.ivprdcprd = 3;
-                x3.ivprddesc = "producto 3";
-                lista.Add(x3);
+                //ivprd x=new ivprd();
+                //x.ivprdcprd = 1;
+                //x.ivprddesc ="producto 1";
+                //lista.Add(x);
+                //ivprd x2 = new ivprd();
+                //x2.ivprdcprd = 2;
+                //x2.ivprddesc = "producto 2";
+                //lista.Add(x2);
+                //ivprd x3 = new ivprd();
+                //x3.ivprdcprd = 3;
+                //x3.ivprddesc = "producto 3";
+                //lista.Add(x3);
 
-                ivprd x4 = new ivprd();
-                x4.ivprdcprd = 4;
-                x4.ivprddesc = "producto 4";
-                lista.Add(x4);
+                //ivprd x4 = new ivprd();
+                //x4.ivprdcprd = 4;
+                //x4.ivprddesc = "producto 4";
+                //lista.Add(x4);
 
                 return lista;
             

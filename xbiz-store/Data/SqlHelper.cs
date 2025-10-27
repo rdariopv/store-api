@@ -1,7 +1,4 @@
-﻿
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -9,23 +6,33 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using xbiz_store.Models;
+using Microsoft.EntityFrameworkCore;
+using xbiz_store.Context;
+using Microsoft.Data.SqlClient;
 
-namespace xbiz_store.Context
+namespace xbiz_store.Data
 {
-    public class StoreContext: DbContext,IStoreContext
+    public class SqlHelper
     {
-        public StoreContext() { }
-        public StoreContext(DbContextOptions<StoreContext> options) : base(options){}
+        private readonly StoreContext _context;
 
-        public DbContext Instance => this;
+        public SqlHelper(StoreContext context)
+        {
+            _context = context;
+        }
+        //   🧩 1. Problema actual
+        //Tu StoreContext:
+        //• Implementa métodos como obtenerDatosSQL, ejecutarSQL, etc., manualmente.
+        //• Está mezclando lógica de acceso a datos con la infraestructura de EF Core.
+        //•Implementa IStoreContext, pero no queda claro cómo ni para qué lo estás usando(podría ser redundante).
+        //• Tiene DbSet<ivprd> pero en tu repositorio trabajas con Product.
+        //⚠️ Eso rompe parcialmente el principio de responsabilidad única (SRP): el DbContext debería limitarse a exponer entidades (DbSet<T>), no ejecutar SQL ni abrir conexiones manualmente.
+        #region Metodos No Permitidos 
 
-        public DbSet<ivprd> ivprd { get; set; }
-    
+
         public DataTable obtenerDatosSQL(string lsSQL)
         {
-            DbConnection loConx = Instance.Database.GetDbConnection();
+            DbConnection loConx = _context.Database.GetDbConnection();
             DbProviderFactory loFactory = DbProviderFactories.GetFactory(loConx);
 
             using (var loCommand = loFactory.CreateCommand())
@@ -45,7 +52,7 @@ namespace xbiz_store.Context
         }
         public DataTable obtenerDatosSQL(string lsSQL, List<SqlParameter> parameters)
         {
-            DbConnection loConx = Instance.Database.GetDbConnection();
+            DbConnection loConx = _context.Database.GetDbConnection();
             DbProviderFactory loFactory = DbProviderFactories.GetFactory(loConx);
 
             using (var loCommand = loFactory.CreateCommand())
@@ -69,7 +76,7 @@ namespace xbiz_store.Context
         }
         public int ejecutarSQL(string lsSQL, IDbContextTransaction loTrans = null)
         {
-            DbConnection loConx = Instance.Database.GetDbConnection();
+            DbConnection loConx = _context.Database.GetDbConnection();
             DbProviderFactory loFactory = DbProviderFactories.GetFactory(loConx);
             try
             {
@@ -108,14 +115,18 @@ namespace xbiz_store.Context
         {
             if (parameters != null)
             {
-                return Instance.Database.ExecuteSqlRaw(lsSQL, parameters);
+                return _context.Database.ExecuteSqlRaw(lsSQL, parameters);
             }
             else
             {
-                return Instance.Database.ExecuteSqlRaw(lsSQL);
+                return _context.Database.ExecuteSqlRaw(lsSQL);
             }
 
 
         }
+
+
+        #endregion
+
     }
 }
