@@ -19,11 +19,14 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-//builder.Services.AddScoped<IStoreContext, StoreContext>();
+// Si IStoreContext es necesario:
+builder.Services.AddScoped<IStoreContext>(provider => provider.GetService<StoreContext>()!);
 builder.Services.AddScoped<ISalesForce, SalesForce>();
 
 
 builder.Services.AddControllers();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -38,6 +41,14 @@ var app = builder.Build();
 //}
 
 //app.UseHttpsRedirection();
+
+// **Configuración para Render:** Kestrel debería detectar la variable PORT, 
+// pero se puede asegurar el arranque en un puerto común si PORT no se detecta
+if (app.Environment.IsProduction() && Environment.GetEnvironmentVariable("PORT") == null)
+{
+    // Esto es solo un respaldo, normalmente Render inyecta PORT
+    app.Urls.Add("http://0.0.0.0:8080");
+}
 
 app.UseAuthorization();
 
