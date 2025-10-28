@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configura la cadena de conexión (ConnectionString) a SQL Server
 var connectionString = builder.Configuration.GetConnectionString("cnx");
-builder.Services.AddDbContext<StoreContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddDbContext<IStoreContext, StoreContext>(opt => opt.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -19,7 +19,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-builder.Services.AddScoped<IStoreContext, StoreContext>();
+//builder.Services.AddScoped<IStoreContext, StoreContext>();
 builder.Services.AddScoped<ISalesForce, SalesForce>();
 
 
@@ -37,7 +37,7 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
