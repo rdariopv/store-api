@@ -5,9 +5,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
 # Copia los archivos de la solución y restaura las dependencias
-COPY *.sln ./
-COPY store-api/*.csproj ./store-api/
 COPY xbiz-store/*.csproj ./xbiz-store/
+COPY store-api/*.csproj ./store-api/
+COPY *.sln ./
 RUN dotnet restore
 
 # Copia el resto de los archivos del proyecto y compila en modo Release
@@ -21,8 +21,11 @@ WORKDIR /app
 # Copia el resultado de la compilación desde la etapa anterior
 COPY --from=build-env /app/out .
 
+# Configura Kestrel para que use la variable de entorno PORT inyectada por el host (Render)
+ENV ASPNETCORE_URLS=http://+:$PORT
+
 # Expone el puerto en el que la API escucha (ajústalo si usas otro puerto)
-EXPOSE 80
+EXPOSE 8080
 
 # Ejecuta la API
 ENTRYPOINT ["dotnet", "store-api.dll"]
