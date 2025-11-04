@@ -20,10 +20,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 // Si IStoreContext es necesario:
-builder.Services.AddScoped<IStoreContext>(provider => provider.GetService<StoreContext>()!);
+//builder.Services.AddScoped<IStoreContext>(provider => provider.GetService<StoreContext>()!);
 builder.Services.AddScoped<ISalesForce, SalesForce>();
-
-
 builder.Services.AddControllers();
 
 
