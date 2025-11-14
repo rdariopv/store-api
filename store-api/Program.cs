@@ -6,8 +6,14 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System;
+using store_api.Mapping;
+using AutoMapper;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+// 👉 Registrar AutoMapper y escanear todos los profiles del ensamblado
+builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
 
 // Configura la cadena de conexión (ConnectionString) a SQL Server
 var connectionString = builder.Configuration.GetConnectionString("cnx");
@@ -61,13 +67,6 @@ app.Run();
 //│   ├── CartController.cs
 //│   ├── OrdersController.cs
 //│   └── UsersController.cs
-//├── Models /
-//│   ├── Product.cs
-//│   ├── Category.cs
-//│   ├── Cart.cs
-//│   ├── CartItem.cs
-//│   ├── Order.cs
-//│   └── User.cs
 //├── DTOs /
 //│   ├── ProductDto.cs
 //│   ├── CartDto.cs
@@ -77,8 +76,21 @@ app.Run();
 //│   ├── CartService.cs
 //│   ├── OrderService.cs
 //│   └── UserService.cs
-//├── Data /
-//│   ├── AppDbContext.cs
-//│   └── SeedData.cs
 //└── Program.cs
+//store_api /
+//├── Repository /
+//│   ├── IProductRepository.cs
+//│   ├── ProductRepository.cs
+//│   ├── IStoreRepository.cs
+//│   ├── StoreRepository.cs
+//├── Models /
+//│   ├── Product.cs
+//│   ├── Category.cs
+//│   ├── Cart.cs
+//│   ├── CartItem.cs
+//│   ├── Order.cs
+//│   └── User.cs
+//└── Data /
+//    ├── AppDbContext.cs
+//    └── SeedData.cs
 

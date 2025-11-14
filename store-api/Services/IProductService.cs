@@ -1,11 +1,12 @@
-﻿using xbiz_store.Models;
+﻿using store_api.DTOs;
+using xbiz_store.Models;
 
 namespace store_api.Services
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<IEnumerable<ProductDto>> GetAllProductsAsync();
 
-        Task<Product?> GetByIdAsync(int id);
+        Task<ProductDto?> GetByIdAsync(int id);
     }
 }
