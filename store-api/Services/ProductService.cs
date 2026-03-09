@@ -1,4 +1,4 @@
-﻿using xbiz_store.Models;
+﻿using xbiz_store.DTOs;
 using xbiz_store.Repository;
 
 namespace store_api.Services
@@ -10,21 +10,70 @@ namespace store_api.Services
         {
             productRepo = productRepository;
         }
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
             // Aquí podrías aplicar lógica adicional, por ejemplo:
             // - Filtrar productos activos
             // - Ordenar por precio, nombre, o stock
-            return await productRepo.GetAllAsync();
+
+            var products=  await productRepo.GetAllAsync();
+            var productos = products.Select(p => new ProductDto
+            {
+                Id = Convert.ToString( p.Codigo),
+                Nombre = p.Nombre,
+                Descripcion = p.Descripcion,
+                Precio = p.PrecioVenta,
+                Imagen = p.Imagen != null
+        ? "data:image/png;base64," + Convert.ToBase64String(p.Imagen)
+        : null
+            });
+
+            return productos;
         }
 
         // Retorna un producto por ID
-        public async Task<Product?> GetByIdAsync(int id)
+        public async Task<ProductDto?> GetByIdAsync(int id)
         {
             // Aquí podrías agregar validaciones de negocio:
             // - Validar si el producto está activo
             // - Incluir control de errores o logging
-            return await productRepo.GetByIdAsync(id);
+
+            var objproductQuery = await productRepo.GetByIdAsync(id);
+            var productos =  new ProductDto
+            {
+                Id =Convert.ToString( objproductQuery.Codigo),
+                Nombre = objproductQuery.Nombre,
+                Descripcion = objproductQuery.Descripcion,
+                Precio = objproductQuery.PrecioVenta,
+                Imagen = objproductQuery.Imagen != null ?  Convert.ToBase64String(objproductQuery.Imagen) : null
+                // Imagen = objproductQuery.Imagen != null ? "data:image/png;base64," + Convert.ToBase64String(objproductQuery.Imagen) : null
+            };
+
+            return productos;
+        }
+
+        // Retorna un producto por ID
+        public async Task<byte[]?> GetImageByIdAsync(int id)
+        {
+            // Aquí podrías agregar validaciones de negocio:
+            // - Validar si el producto está activo
+            // - Incluir control de errores o logging
+
+            var objproductQuery = await productRepo.GetByIdAsync(id);
+            if (objproductQuery == null) {
+                return null;
+            }
+            return objproductQuery.Imagen;
+        }
+
+        public async Task<List<int>> GetListImagesbyIdProductAsync(int id)
+        {
+            List<int> listId =  new List<int>();
+            listId.Add(id);
+            listId.Add(4);
+            listId.Add(5);
+            return await Task.FromResult( listId);
+            //throw new NotImplementedException();
         }
     }
 }

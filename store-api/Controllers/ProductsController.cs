@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using store_api.Services;
+using xbiz_store.DTOs;
 
 namespace store_api.Controllers
 {
@@ -17,6 +18,7 @@ namespace store_api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var products = await prdService.GetAllProductsAsync();
+            
             return Ok(products);
         }
         // ✅ GET: api/product/{id}
@@ -30,5 +32,29 @@ namespace store_api.Controllers
 
             return Ok(product);
         }
+
+        [HttpGet("image/{id}")]
+        public async Task<IActionResult> GetImage(int id)
+        {
+            var imgProduct = await prdService.GetImageByIdAsync(id);
+
+            if (imgProduct == null)
+                return NotFound();
+
+            return File(imgProduct, "image/png");
+        }
+
+         [HttpGet("products/{id}/images")]
+        public async Task<IActionResult> GetImageByProduct(int id)
+        {
+            var imgProduct = await prdService.GetListImagesbyIdProductAsync(id);
+
+            if (imgProduct == null)
+                return NotFound();
+
+            return Ok(imgProduct);
+        }
+
+       
     }
 }
