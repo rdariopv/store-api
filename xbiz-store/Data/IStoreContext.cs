@@ -8,7 +8,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using xbiz_store.Models;
+using xbiz_store.DTOs;
+using xbiz_store.Queries;
 
 namespace xbiz_store.Context
 {
@@ -16,7 +17,7 @@ namespace xbiz_store.Context
     {
         DbContext Instance { get; }
         //DbSet<ivprd> ivprd { get; set; }
-        DbSet<Product> Product { get; set; }
+        DbSet<ProductQuery> ProductQuery { get; set; }
         //DataTable obtenerDatosSQL(string lsSQL);
         //DataTable obtenerDatosSQL(string lsSQL, List<SqlParameter> parameters);
         //int ejecutarSQL(string lsSQL, IDbContextTransaction loTrans = null);

@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xbiz_store.Context;
-using xbiz_store.Models;
+using xbiz_store.DTOs;
+using xbiz_store.Queries;
 
 namespace xbiz_store.Repository
 {
@@ -18,7 +19,7 @@ namespace xbiz_store.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<ProductQuery>> GetAllAsync()
         {
             var sql = @"
                 SELECT ivprdcprd AS Codigo,
@@ -46,10 +47,10 @@ namespace xbiz_store.Repository
                   AND A.ivconcorr = ivprdumba
                   AND ivprdfact = 1";
 
-            return await _context.Set<Product>().FromSqlRaw(sql).ToListAsync();
+            return await _context.Set<ProductQuery>().FromSqlRaw(sql).ToListAsync();
         }
 
-        public async Task<Product?> GetByIdAsync(int id)
+        public async Task<ProductQuery?> GetByIdAsync(int id)
         {
             var sql = @"
                 SELECT ivprdcprd AS Codigo,
@@ -57,7 +58,7 @@ namespace xbiz_store.Repository
                        ivprdnomb AS Nombre,
                        ivprddesc AS Descripcion,
                        A.ivcondesc AS UnidadMedida,
-                       ISNULL(CAST(ivimgimag AS VARBINARY(8000)), NULL) AS Imagen,
+                       ISNULL(CAST(ivimgimag AS VARBINARY(MAX)), NULL) AS Imagen,
                        ISNULL((SELECT ivmarnomb FROM ivmar WHERE ivmarcmar = ivprdmarc), 'Sin Marca') AS MarcaDescripcion,
                        ISNULL((SELECT CAST(SUM(ivdtrcant) AS DECIMAL(18,2)) FROM ivdtr, ivalm
                                WHERE ivdtrstat = 0 AND ivalmstat = 0
@@ -82,10 +83,16 @@ namespace xbiz_store.Repository
                 new SqlParameter("@id", id),
             };
 
-            return await _context.Set<Product>().
+            return await _context.Set<ProductQuery>().
                 FromSqlRaw(sql, parameters).
                 AsNoTracking().
                 FirstOrDefaultAsync();
+        }
+
+ 
+        public Task<byte[]> GetImageByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

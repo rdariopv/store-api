@@ -10,9 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using xbiz_store.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Security.Claims;
+using xbiz_store.DTOs;
+using xbiz_store.Queries;
 
 namespace xbiz_store.Context
 {
@@ -38,7 +39,7 @@ namespace xbiz_store.Context
         }
 
         public DbContext Instance => this;
-        public DbSet<Product> Product { get; set;  }
+        public DbSet<ProductQuery> ProductQuery { get; set;  }
 
         // 🔹 Si tienes más entidades, agrégalas aquí
         // public DbSet<Category> Categories { get; set; }
