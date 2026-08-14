@@ -75,5 +75,34 @@ namespace store_api.Services
             return await Task.FromResult( listId);
             //throw new NotImplementedException();
         }
+
+        public async Task<ProductFilterResult> SearchProductsAsync(ProductFilterRequest filters)
+        {
+            var (items, total) = await productRepo.SearchAsync(filters);
+
+            return new ProductFilterResult
+            {
+                Items = items.Select(p => new ProductDto
+                {
+                    Id = Convert.ToString(p.Codigo),
+                    Nombre = p.Nombre,
+                    Descripcion = p.Descripcion,
+                    Precio = p.PrecioVenta,
+                    Imagen = p.Imagen != null
+                        ? "data:image/png;base64," + Convert.ToBase64String(p.Imagen)
+                        : null
+                }),
+                TotalItems = total,
+                Page = filters.Page,
+                PageSize = filters.PageSize
+            };
+        }
+
+        public async Task<IEnumerable<string>> GetCategoriasAsync()
+            => await productRepo.GetCategoriasAsync();
+
+        public async Task<IEnumerable<string>> GetMarcasAsync()
+            => await productRepo.GetMarcasAsync();
+
     }
 }

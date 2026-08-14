@@ -15,7 +15,9 @@ builder.Services.AddDbContext<IStoreContext, StoreContext>(opt => opt.UseSqlServ
 
 // Add services to the container.
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();

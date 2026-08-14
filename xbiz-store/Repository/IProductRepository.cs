@@ -13,5 +13,9 @@ namespace xbiz_store.Repository
           Task<IEnumerable<ProductQuery>> GetAllAsync();
           Task<ProductQuery?> GetByIdAsync(int id);
            Task<byte[]> GetImageByIdAsync(int id);
+
+        Task<(IEnumerable<ProductQuery> Items, int Total)> SearchAsync(ProductFilterRequest filters);
+        Task<IEnumerable<string>> GetCategoriasAsync();
+        Task<IEnumerable<string>> GetMarcasAsync();
     }
 }

@@ -94,5 +94,92 @@ namespace xbiz_store.Repository
         {
             throw new NotImplementedException();
         }
+
+        public async Task<(IEnumerable<ProductQuery> Items, int Total)> SearchAsync(ProductFilterRequest f)
+        {
+            var where = new List<string>();
+            var parametros = new List<SqlParameter>();
+
+            if (!string.IsNullOrWhiteSpace(f.SearchTerm))
+            {
+                where.Add("(ivprdnomb LIKE @term OR ivprddesc LIKE @term)");
+                parametros.Add(new SqlParameter("@term", $"%{f.SearchTerm.Trim()}%"));
+            }
+            if (!string.IsNullOrWhiteSpace(f.Categoria))
+            {
+                where.Add("categoria = @categoria");        // 👈 ajusta nombre de columna
+                parametros.Add(new SqlParameter("@categoria", f.Categoria));
+            }
+            if (!string.IsNullOrWhiteSpace(f.Marca))
+            {
+                where.Add("Marca = @marca");                // 👈 ajusta nombre de columna
+                parametros.Add(new SqlParameter("@marca", f.Marca));
+            }
+            if (f.PrecioMin.HasValue)
+            {
+                where.Add("PrecioVenta >= @precioMin");    // 👈 ajusta nombre de columna
+                parametros.Add(new SqlParameter("@precioMin", f.PrecioMin.Value));
+            }
+            if (f.PrecioMax.HasValue)
+            {
+                where.Add("PrecioVenta <= @precioMax");
+                parametros.Add(new SqlParameter("@precioMax", f.PrecioMax.Value));
+            }
+
+            // Futuro filtro — solo agrega un if aquí:
+            // if (f.SoloEnStock == true)
+            //     where.Add("stock > 0");
+
+            var whereClause = where.Any() ? "WHERE " + string.Join(" AND ", where) : "";
+            var offset = (f.Page - 1) * f.PageSize;
+
+            var sqlItems = $@"
+        SELECT ivprdcprd AS Codigo, ivprdnomb AS Nombre, ivprddesc AS Descripcion,ivprdcbrr AS CodigoBarras,
+                ISNULL((SELECT CAST(MAX(ivprepmve) AS DECIMAL(18,2)) FROM ivpre
+                               WHERE ivprestat = 0 AND ivprenofi = 1
+                                 AND ivpretpre = 1
+                                 AND ivprecprd = ivprdcprd), 0) AS PrecioVenta, 
+               ISNULL(CAST(ivimgimag AS VARBINARY(MAX)), NULL) AS Imagen, 
+               ivprdclin as categoria, 
+               ISNULL((SELECT CAST(SUM(ivdtrcant) AS DECIMAL(18,2)) FROM ivdtr, ivalm
+                               WHERE ivdtrstat = 0 AND ivalmstat = 0
+                                 AND ivalmcalm = ivdtrcalm
+                                 AND ivdtrcalm = 1
+                                 AND ivdtrcprd = ivprdcprd), 0) AS StockActual,
+               ISNULL((SELECT ivmarnomb FROM ivmar WHERE ivmarcmar = ivprdmarc), 'Sin Marca') AS Marca
+        FROM ivprd INNER JOIN ivimg ON ivprdcprd = ivimgcprd
+        {whereClause}
+        ORDER BY ivprdnomb
+        OFFSET {offset} ROWS FETCH NEXT {f.PageSize} ROWS ONLY";
+
+            var sqlCount = $"SELECT COUNT(*) AS Value FROM ivprd {whereClause}";
+
+            var items = await _context.Set<ProductQuery>()
+                .FromSqlRaw(sqlItems, parametros.ToArray())
+                .AsNoTracking()
+                .ToListAsync();
+
+            var countParams = parametros
+        .Select(p => new SqlParameter(p.ParameterName, p.Value))
+        .ToArray();
+
+            var total = await _context.Database
+                .SqlQueryRaw<int>(sqlCount, countParams)
+                .FirstOrDefaultAsync();
+
+            return (items, total);
+        }
+
+        public async Task<IEnumerable<string>> GetCategoriasAsync()
+        {
+            var sql = "SELECT DISTINCT categoria FROM ivprd WHERE categoria IS NOT NULL ORDER BY categoria";
+            return await _context.Database.SqlQueryRaw<string>(sql).ToListAsync();
+        }
+
+        public async Task<IEnumerable<string>> GetMarcasAsync()
+        {
+            var sql = "SELECT DISTINCT marca FROM ivprd WHERE marca IS NOT NULL ORDER BY marca";
+            return await _context.Database.SqlQueryRaw<string>(sql).ToListAsync();
+        }
     }
 }

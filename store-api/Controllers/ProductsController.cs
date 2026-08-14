@@ -55,6 +55,21 @@ namespace store_api.Controllers
             return Ok(imgProduct);
         }
 
-       
+        [HttpPost("search")]
+        public async Task<IActionResult> Search([FromBody] ProductFilterRequest filters)
+        {
+            var result = await prdService.SearchProductsAsync(filters);
+            return Ok(result);
+        }
+
+        [HttpGet("categorias")]
+        public async Task<IActionResult> GetCategorias()
+            => Ok(await prdService.GetCategoriasAsync());
+
+        [HttpGet("marcas")]
+        public async Task<IActionResult> GetMarcas()
+            => Ok(await prdService.GetMarcasAsync());
+
+
     }
 }

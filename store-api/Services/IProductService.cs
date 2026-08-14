@@ -10,5 +10,8 @@ namespace store_api.Services
         Task<byte[]?> GetImageByIdAsync(int id);
 
         Task<List<int>> GetListImagesbyIdProductAsync(int id);
+        Task<ProductFilterResult> SearchProductsAsync(ProductFilterRequest filters);
+        Task<IEnumerable<string>> GetCategoriasAsync();
+        Task<IEnumerable<string>> GetMarcasAsync();
     }
 }
